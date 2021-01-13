@@ -1,5 +1,29 @@
 {{outlet}}
 
-{{#each model |task|}}
-  title: {{task.title}}<br>
-{{/each}}
+<section dir="rtl">
+
+  <header>
+    <span>משימות</span>
+    <span>
+      {{input value=newTask placeholder='משימה חדשה'}}
+      <button title="הוסף" {{action 'addTask'}}>+</button>
+    </span>
+  </header>
+
+  <div class="content">
+    <ul>
+      {{#each model as |taskItem|}}
+        {{task-item task=taskItem}}
+      {{/each}}
+    </ul>
+  </div>
+
+  <footer>
+    <ul>
+      <li>לסיום: {{tasksInCompleted}}</li>
+      <li>הושלמו: {{tasksCompleted}}</li>
+      <li>סה"כ: {{tasksSummary}}</li>
+    </ul>
+  </footer>
+
+</section>

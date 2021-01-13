@@ -1,0 +1,79 @@
+*{
+  font-size: 20px;
+}
+.ember-application {
+  margin: 0;
+}
+header {
+  padding: 10px 5px;
+  background: yellow;
+  text-align: left;
+}
+header input {
+  width: 150px;
+  text-align: center;
+  margin-right: calc(50% - 220px);
+}
+@media screen and (max-width: 480px) {
+  header input {
+    margin-right: calc(50% - 120px);
+  }
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.content ul {
+  height: calc(100vh - 2rem - 32px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: lightgray;
+  counter-reset: section;
+}
+.content ul li .title::before{
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+.content ul li button {
+  float: left;
+  padding: 0 5px;
+  margin-left: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.content ul li button.share {
+  background-image: url(user.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.content ul li button.share.is-shared{
+  filter: invert(31%) sepia(175%) saturate(500%) hue-rotate(175deg) brightness(100%) contrast(175%);
+}
+.content .ember-view {
+  padding: 5px 0;
+}
+.content .ember-view:nth-child(odd) {
+  background: lightgreen;
+}
+.content .ember-view:nth-child(even) {
+  background: white;
+}
+.title.is-completed {
+  text-decoration: line-through;
+  color: gray;
+}
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+footer ul {
+  display: inline-flex;
+  width: 100%;
+}
+footer ul li {
+  flex: auto;
+  text-align: center;
+}

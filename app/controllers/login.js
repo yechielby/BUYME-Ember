@@ -1,9 +1,10 @@
 import Controller from '@ember/controller';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
   email: null,
   password: null,
-  session: Ember.inject.service(),
+  session: inject(),
   actions: {
     authenticate() {
       this.get('session').authenticate(this.get('email'),this.get('password'))
@@ -11,7 +12,7 @@ export default Controller.extend({
         alert('Logged in!');
         this.transitionToRoute('tasks');
       }, (err)=> {
-        alert(`Error with login! ${err.responseText}`);
+        alert(err.responseText  ? err.responseText : err.toString());
       });
     }
   }

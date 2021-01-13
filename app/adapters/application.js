@@ -1,10 +1,12 @@
+import { inject } from '@ember/service';
+import { computed } from '@ember/object';
 import DS from 'ember-data';
-import EmberResolver from 'ember-resolver';
 
 export default DS.RESTAdapter.extend({
+  host: 'http://localhost:8000',
   namespace: 'api',
-  session: Ember.inject.service(),
-  headers: Ember.computed('session.token', function() {
+  session: inject(),
+  headers: computed('session.token', function() {
     return {
       'Authorization': `Bearer ${this.get('session.token')}`
     }
