@@ -18,12 +18,12 @@ export default Controller.extend({
   }),
   actions: {
     addTask() {
-      // alert(this.get('newTask'));
       this.get('store').createRecord('task', {
         title: this.get('newTask'),
         isCompleted: false,
         isShared: false
       }).save();
+      this.set('newTask', '');
     }
   }
 });
