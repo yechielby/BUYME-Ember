@@ -1,0 +1,17 @@
+{{yield}}
+<header>
+  <span>שיתןף משימה עם</span>
+</header>
+<div class="content-modal">
+  <ul>
+    {{#each usersList as |user|}}
+      <li>
+        {{input type="checkbox"
+          disabled=(readonly user.isShared)
+          checked=(readonly user.isShared)
+          click=(action 'shareUser' user.id)}}
+        {{user.name}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

@@ -1,31 +1,33 @@
 import Service from '@ember/service';
+import { inject } from '@ember/service';
 import { bind } from '@ember/runloop';
 import $ from 'jquery';
 
 export default Service.extend({
-  token: null,
-  authenticate(email, pass) {
+  session: inject(),
+  getUsers(taskId) {
     return $.ajax({
-      method: 'POST',
-      url: 'http://localhost:8000/api/user-login',
-      data: {email: email, password: pass}
+      headers: {'Authorization': `Bearer ${this.get('session.token')}`},
+      method: 'GET',
+      url: `http://localhost:8000/api/task-detail/${taskId}`,
     }).then(bind(this, (info)=>{
       if(info.success){
-        this.set('token',info.success.token);
+        return info.success.users;
       }
       else{
         throw new Error(info.validationErrors ? JSON.stringify(info.validationErrors) : info.message);
       }
     }));
   },
-  registration(fullName, mail, pass) {
+  shareTask(taskId, userId) {
     return $.ajax({
+      headers: {'Authorization': `Bearer ${this.get('session.token')}`},
       method: 'POST',
-      url: 'http://localhost:8000/api/user-registration',
-      data: {name: fullName, email: mail, password: pass}
+      url: 'http://localhost:8000/api/share-task',
+      data: {task_id: taskId, user_id: userId}
     }).then(bind(this, (info)=>{
       if(info.success){
-        alert('ההרשמה התבצע בהצלחה!');
+        alert('השיתוף התבצע בהצלחה!');
       }
       else{
         throw new Error(info.validationErrors ? JSON.stringify(info.validationErrors) : info.message);

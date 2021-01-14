@@ -9,7 +9,6 @@ export default Controller.extend({
     authenticate() {
       this.get('session').authenticate(this.get('email'),this.get('password'))
       .then( ()=> {
-        alert('Logged in!');
         this.transitionToRoute('tasks');
       }, (err)=> {
         alert(err.responseText  ? err.responseText : err.toString());

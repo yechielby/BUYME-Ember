@@ -1,0 +1,13 @@
+{{outlet}}
+<h1>יצירת חשבון</h1>
+<form {{action 'register' on="submit"}}>
+  {{input type="text"     value=userName      placeholder='Full Name'}}<br>
+  {{input type="email"    value=userEmail     placeholder='Email'}}<br>
+  {{input type='password' value=userPassword  placeholder='Password'}}<br>
+  {{input type='password' value=userPassword2 placeholder='Password again'}}<br>
+  <br>
+  <button type="submit" disabled={{formInvalid}}>הרשמה</button>
+</form>
+<br>
+<br>
+יש לך כבר חשבון? {{#link-to 'login'}}כניסה לחשבון קיים.{{/link-to}}

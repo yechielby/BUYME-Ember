@@ -1,7 +1,11 @@
 import Component from '@ember/component';
+import { inject } from '@ember/service';
 
 export default Component.extend({
   task: null,
+  userslist: null,
+  isShowingModal: false,
+  users: inject(),
   actions: {
     toggleCompleted(task) {
 
@@ -16,7 +20,18 @@ export default Component.extend({
       task.save();
     },
     openModal(){
-      alert('openModal');
+      this.get('users').getUsers(this.get('task.id'))
+      .then( (u)=> {
+        this.set('userslist', u);
+      }, (err)=> {
+        alert(err.responseText  ? err.responseText : err.toString());
+      });
+
+
+      this.toggleProperty('isShowingModal');
+    },
+    toggleModal: function() {
+      this.toggleProperty('isShowingModal');
     }
   }
 });

@@ -2,6 +2,16 @@
 <li>
   {{input type="checkbox" checked=(readonly task.isCompleted) click=(action 'toggleCompleted' task)}}
   <span class="title{{if task.isCompleted " is-completed"}}"> {{task.title}}</span>
-  <button title="הסר" class="remove" {{action 'openModal' task}}>x</button>
-  <button title="שתף" class="share {{if task.isShared " is-shared"}}" {{action 'removeTask' task}}>&nbsp;</button>
+  <button title="הסר" class="remove" {{action 'removeTask' task}}>x</button>
+  <button title="שתף" class="share {{if task.isShared " is-shared"}}" {{action 'openModal' task}}>&nbsp;</button>
 </li>
+
+{{#if isShowingModal}}
+  {{#modal-dialog
+      onClose=(action "toggleModal")
+      targetAttachment="center"
+      translucentOverlay=true
+  }}
+    {{share-users usersList=userslist task=task}}
+  {{/modal-dialog}}
+{{/if}}

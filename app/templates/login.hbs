@@ -1,5 +1,9 @@
 {{outlet}}
-
+<h1>כניסת משתמש</h1>
 {{input value=email placeholder='Login'}}<br>
 {{input value=password placeholder='Password' type='password'}}<br>
-<button {{action 'authenticate'}}>Login</button>
+<br>
+<button {{action 'authenticate'}}>התחבר</button>
+<br>
+<br>
+אין לך חשבון? {{#link-to 'signup'}}הרשמה!{{/link-to}}
