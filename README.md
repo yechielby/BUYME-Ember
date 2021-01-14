@@ -1,7 +1,10 @@
-# my-task
+# BUYME
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+client side on Ember.js 2.18 cli
+
+# my-task app 
+
+Toto list (CRUD)
 
 ## Prerequisites
 
@@ -18,34 +21,22 @@ You will need the following things properly installed on your computer.
 * `cd my-task`
 * `npm install`
 
-## Running / Development
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
 
-### Running Tests
+## Running Ember
 
-* `ember test`
-* `ember test --server`
+`ember serve --port=4201`
+* Visit your app at [http://localhost:4201](http://localhost:4201).
+* (or any other port).
 
-### Building
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+## My details
 
-### Deploying
+- Yechiei Bar Yehuda
+- [yechieby@gmail.com](yechieby@gmail.com)
+- 054-2233-159
+## License
 
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
